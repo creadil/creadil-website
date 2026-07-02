@@ -1,9 +1,17 @@
-export default async function handler(req, res) {
+const nodemailer = require('nodemailer');
+
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
   const d = req.body;
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) return res.status(500).json({ error: 'Missing RESEND_API_KEY' });
+
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_APP_PASSWORD
+    }
+  });
 
   const html = `
 <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#1e293b;">
@@ -67,30 +75,20 @@ export default async function handler(req, res) {
     </div>` : ''}
 
     <a href="mailto:${d.email}?subject=RE: Demande projet ${d.societe}" style="display:inline-block;background:#F97316;color:white;font-weight:700;padding:14px 28px;border-radius:10px;text-decoration:none;font-size:15px;">Répondre à ${d.prenom}</a>
-
   </div>
   <p style="text-align:center;font-size:12px;color:#94a3b8;margin-top:20px;">CREADIL — Impression 3D professionnelle · Lyon</p>
 </div>`;
 
-  const emailRes = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${apiKey}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      from: 'CREADIL <devis@eestaurexo.resend.app>',
-      to: ['t.castaldi@creadil.com'],
+  try {
+    await transporter.sendMail({
+      from: `"CREADIL Devis" <${process.env.GMAIL_USER}>`,
+      to: 't.castaldi@creadil.com',
       subject: `Demande projet "${d.societe}"`,
       html
-    })
-  });
-
-  if (!emailRes.ok) {
-    const err = await emailRes.text();
-    console.error('Resend error:', err);
-    return res.status(500).json({ error: 'Email failed' });
+    });
+    return res.status(200).json({ ok: true });
+  } catch (err) {
+    console.error('Gmail error:', err);
+    return res.status(500).json({ error: err.message });
   }
-
-  return res.status(200).json({ ok: true });
-}
+};
