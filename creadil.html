@@ -1167,17 +1167,46 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 counters.forEach(c => observer.observe(c));
 
-// Form submit
-function handleSubmit(e) {
+// Supabase
+const SUPABASE_URL = 'https://dodlgiqrmbhfozhglajt.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRvZGxnaXFybWJoZm96aGdsYWp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5Nzc3NTAsImV4cCI6MjA5ODU1Mzc1MH0.lGULFm1fZiVJiDB-3OWh1krevpshu6q5Z1hhwTuePbM';
+
+async function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
   const btn = form.querySelector('button[type=submit]');
   btn.disabled = true;
   btn.textContent = 'Envoi en cours…';
-  setTimeout(() => {
+
+  const data = {
+    prenom: form.prenom.value,
+    nom: form.nom.value,
+    societe: form.societe.value,
+    email: form.email.value,
+    telephone: form.telephone.value,
+    type_projet: form.sujet.value,
+    message: form.message.value
+  };
+
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/contacts`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': SUPABASE_KEY,
+      'Authorization': `Bearer ${SUPABASE_KEY}`,
+      'Prefer': 'return=minimal'
+    },
+    body: JSON.stringify(data)
+  });
+
+  if (res.ok) {
     form.style.display = 'none';
     document.getElementById('form-success').style.display = 'block';
-  }, 1200);
+  } else {
+    btn.disabled = false;
+    btn.textContent = 'Envoyer ma demande de devis';
+    alert('Une erreur est survenue. Veuillez réessayer ou nous contacter par email.');
+  }
 }
 
 // Responsive grids
