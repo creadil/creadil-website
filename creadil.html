@@ -347,6 +347,37 @@
   /* Arrow SVG */
   .arrow-icon { transition: transform 0.2s; }
   .btn-primary:hover .arrow-icon { transform: translateX(4px); }
+
+  /* Chips type de besoin */
+  .chip {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 9px 18px;
+    font-size: 14px; font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .chip:hover { border-color: rgba(249,115,22,0.4); color: var(--text); background: rgba(249,115,22,0.06); }
+  .chip.active { background: var(--orange); border-color: var(--orange); color: white; font-weight: 600; }
+
+  /* File item */
+  .file-item {
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px; color: var(--text);
+  }
+  .file-remove {
+    margin-left: auto; background: none; border: none;
+    color: var(--muted); cursor: pointer; padding: 2px; line-height:1;
+    transition: color 0.2s;
+  }
+  .file-remove:hover { color: #F87171; }
 </style>
 </head>
 <body>
@@ -959,99 +990,173 @@
 <section class="section" id="contact">
   <div style="max-width:1200px; margin:0 auto; padding:0 24px;">
 
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;" class="about-grid">
+    <div style="display:grid; grid-template-columns:1fr 1.6fr; gap:80px; align-items:start;" class="about-grid">
 
+      <!-- Colonne gauche -->
       <div data-aos="fade-right">
         <div class="section-tag">Contact & Devis</div>
         <h2 class="section-title">Parlons de votre <span style="color:var(--orange);">projet</span></h2>
         <p class="section-subtitle" style="max-width:100%;">
-          Décrivez-nous votre besoin et joignez vos fichiers 3D. Nous vous répondrons sous 48h ouvrées avec une analyse technique et un devis détaillé.
+          Décrivez votre besoin, joignez vos fichiers 3D. Nous vous répondrons sous 48h avec une analyse technique et un devis détaillé.
         </p>
-
         <div style="margin-top:40px; display:flex; flex-direction:column; gap:20px;">
           <div style="display:flex; align-items:center; gap:14px;">
-            <div style="width:44px; height:44px; background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.2); border-radius:11px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <div style="width:44px;height:44px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2);border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
             <div>
-              <div style="font-size:12px; color:var(--muted); font-weight:600; margin-bottom:2px;">Email</div>
-              <a href="mailto:contact@creadil.fr" style="color:var(--text); text-decoration:none; font-size:15px; font-weight:500;">contact@creadil.fr</a>
+              <div style="font-size:12px;color:var(--muted);font-weight:600;margin-bottom:2px;">Email</div>
+              <a href="mailto:t.castaldi@creadil.com" style="color:var(--text);text-decoration:none;font-size:15px;font-weight:500;">t.castaldi@creadil.com</a>
             </div>
           </div>
           <div style="display:flex; align-items:center; gap:14px;">
-            <div style="width:44px; height:44px; background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.2); border-radius:11px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <div style="width:44px;height:44px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2);border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
             <div>
-              <div style="font-size:12px; color:var(--muted); font-weight:600; margin-bottom:2px;">Localisation</div>
-              <div style="color:var(--text); font-size:15px; font-weight:500;">Showroom — Région lyonnaise</div>
+              <div style="font-size:12px;color:var(--muted);font-weight:600;margin-bottom:2px;">Localisation</div>
+              <div style="color:var(--text);font-size:15px;font-weight:500;">Showroom — Région lyonnaise</div>
             </div>
           </div>
           <div style="display:flex; align-items:center; gap:14px;">
-            <div style="width:44px; height:44px; background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.2); border-radius:11px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <div style="width:44px;height:44px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2);border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
             </div>
             <div>
-              <div style="font-size:12px; color:var(--muted); font-weight:600; margin-bottom:2px;">Délai de réponse</div>
-              <div style="color:var(--text); font-size:15px; font-weight:500;">48h ouvrées</div>
+              <div style="font-size:12px;color:var(--muted);font-weight:600;margin-bottom:2px;">Délai de réponse</div>
+              <div style="color:var(--text);font-size:15px;font-weight:500;">48h ouvrées</div>
             </div>
           </div>
         </div>
+        <div style="margin-top:40px; background:rgba(249,115,22,0.05); border:1px solid rgba(249,115,22,0.15); border-radius:14px; padding:20px; display:flex; gap:12px; align-items:flex-start;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" style="flex-shrink:0;margin-top:1px;"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6;">Vos fichiers et informations sont traités de manière strictement confidentielle. Aucun transfert à des tiers.</p>
+        </div>
       </div>
 
+      <!-- Colonne droite — Formulaire -->
       <div data-aos="fade-left" data-aos-delay="100">
-        <form onsubmit="handleSubmit(event)" style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:24px; padding:40px; display:flex; flex-direction:column; gap:20px;">
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-            <div>
-              <label class="form-label" for="prenom">Prénom</label>
-              <input class="form-input" type="text" id="prenom" name="prenom" placeholder="Jean" required>
+        <form id="devis-form" onsubmit="handleSubmit(event)" style="background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:24px;padding:40px;display:flex;flex-direction:column;gap:28px;">
+
+          <!-- Section 01 — Coordonnées -->
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);">
+              <span style="font-size:12px;font-weight:800;color:var(--orange);">01</span>
+              <span style="font-size:15px;font-weight:700;color:var(--text);">Vos coordonnées</span>
             </div>
-            <div>
-              <label class="form-label" for="nom">Nom</label>
-              <input class="form-input" type="text" id="nom" name="nom" placeholder="Dupont" required>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                <div>
+                  <label class="form-label" for="prenom">Prénom *</label>
+                  <input class="form-input" type="text" id="prenom" name="prenom" placeholder="Jean" required>
+                </div>
+                <div>
+                  <label class="form-label" for="nom">Nom *</label>
+                  <input class="form-input" type="text" id="nom" name="nom" placeholder="Dupont" required>
+                </div>
+              </div>
+              <div>
+                <label class="form-label" for="societe">Société *</label>
+                <input class="form-input" type="text" id="societe" name="societe" placeholder="Votre entreprise" required>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                <div>
+                  <label class="form-label" for="email">Email professionnel *</label>
+                  <input class="form-input" type="email" id="email" name="email" placeholder="jean@societe.fr" required>
+                </div>
+                <div>
+                  <label class="form-label" for="telephone">Téléphone</label>
+                  <input class="form-input" type="tel" id="telephone" name="telephone" placeholder="+33 6 XX XX XX XX">
+                </div>
+              </div>
             </div>
           </div>
+
+          <!-- Section 02 — Projet -->
           <div>
-            <label class="form-label" for="societe">Société</label>
-            <input class="form-input" type="text" id="societe" name="societe" placeholder="Votre entreprise" required>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);">
+              <span style="font-size:12px;font-weight:800;color:var(--orange);">02</span>
+              <span style="font-size:15px;font-weight:700;color:var(--text);">Votre projet</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+
+              <!-- Type de besoin chips -->
+              <div>
+                <label class="form-label">Type de besoin *</label>
+                <div style="display:flex;flex-wrap:wrap;gap:10px;" id="chips-container">
+                  <button type="button" class="chip" onclick="selectChip(this,'Prototype')">Prototype</button>
+                  <button type="button" class="chip" onclick="selectChip(this,'Pièce fonctionnelle')">Pièce fonctionnelle</button>
+                  <button type="button" class="chip" onclick="selectChip(this,'Série')">Série</button>
+                  <button type="button" class="chip" onclick="selectChip(this,'Modélisation / scan')">Modélisation / scan</button>
+                </div>
+                <input type="hidden" id="type_besoin" name="type_besoin">
+              </div>
+
+              <!-- Technologie -->
+              <div>
+                <label class="form-label" for="technologie">Technologie envisagée</label>
+                <select class="form-input" id="technologie" name="technologie" style="cursor:pointer;">
+                  <option value="À définir avec CREADIL">À définir avec CREADIL</option>
+                  <option value="FDM — pièce fonctionnelle">FDM — pièce fonctionnelle</option>
+                  <option value="SLA — haute précision">SLA — haute précision</option>
+                  <option value="Projet mixte">Projet mixte</option>
+                </select>
+              </div>
+
+              <!-- Quantité + Dimensions -->
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                <div>
+                  <label class="form-label" for="quantite">Quantité estimée</label>
+                  <input class="form-input" type="number" id="quantite" name="quantite" placeholder="Ex. 25" min="1">
+                </div>
+                <div>
+                  <label class="form-label" for="dimensions">Dimensions max. (mm)</label>
+                  <input class="form-input" type="text" id="dimensions" name="dimensions" placeholder="Ex. 420 × 180 × 90">
+                </div>
+              </div>
+
+              <!-- Matière -->
+              <div>
+                <label class="form-label" for="matiere">Matière ou contrainte principale</label>
+                <input class="form-input" type="text" id="matiere" name="matiere" placeholder="Ex. tenue UV, chaleur, rigidité…">
+              </div>
+
+              <!-- Description -->
+              <div>
+                <label class="form-label" for="message">Décrivez l'usage et les contraintes *</label>
+                <textarea class="form-input" id="message" name="message" placeholder="Fonction de la pièce, environnement, assemblage, délai souhaité…" required></textarea>
+              </div>
+            </div>
           </div>
+
+          <!-- Section 03 — Fichiers -->
           <div>
-            <label class="form-label" for="email">Email professionnel</label>
-            <input class="form-input" type="email" id="email" name="email" placeholder="jean.dupont@societe.fr" required>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);">
+              <span style="font-size:12px;font-weight:800;color:var(--orange);">03</span>
+              <span style="font-size:15px;font-weight:700;color:var(--text);">Fichiers du projet</span>
+            </div>
+            <div id="drop-zone" onclick="document.getElementById('fichiers-input').click()" style="border:2px dashed rgba(255,255,255,0.12);border-radius:16px;padding:32px;text-align:center;cursor:pointer;transition:all 0.25s;" onmouseover="this.style.borderColor='rgba(249,115,22,0.4)';this.style.background='rgba(249,115,22,0.03)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.12)';this.style.background='transparent'" ondragover="dragOver(event)" ondrop="dropFiles(event)" ondragleave="this.style.borderColor='rgba(255,255,255,0.12)';this.style.background='transparent'">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5" style="margin:0 auto 12px;display:block;opacity:0.7;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <p style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px;">Déposez vos fichiers ici</p>
+              <p style="font-size:13px;color:var(--muted);">ou cliquez pour parcourir · STL, OBJ, STEP, 3MF, ZIP, PDF · 50 Mo max/fichier</p>
+              <input type="file" id="fichiers-input" multiple accept=".stl,.obj,.step,.stp,.3mf,.zip,.pdf" style="display:none;" onchange="handleFiles(this.files)">
+            </div>
+            <div id="file-list" style="margin-top:12px;display:flex;flex-direction:column;gap:8px;"></div>
           </div>
-          <div>
-            <label class="form-label" for="telephone">Téléphone</label>
-            <input class="form-input" type="tel" id="telephone" name="telephone" placeholder="+33 6 XX XX XX XX">
-          </div>
-          <div>
-            <label class="form-label" for="sujet">Type de projet</label>
-            <select class="form-input" id="sujet" name="sujet" style="appearance:none; cursor:pointer;">
-              <option value="" disabled selected>Sélectionnez...</option>
-              <option>Prototypage rapide</option>
-              <option>Pièces techniques / fonctionnelles</option>
-              <option>Petite / moyenne série</option>
-              <option>Grand format (> 300mm)</option>
-              <option>Assemblage & finition</option>
-              <option>Autre / Je ne sais pas encore</option>
-            </select>
-          </div>
-          <div>
-            <label class="form-label" for="message">Description du projet</label>
-            <textarea class="form-input" id="message" name="message" placeholder="Décrivez votre projet, les dimensions, le matériau souhaité, les quantités et les délais…"></textarea>
-          </div>
-          <div style="background:rgba(249,115,22,0.05); border:1px solid rgba(249,115,22,0.15); border-radius:12px; padding:14px 16px; display:flex; gap:10px; align-items:flex-start;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" style="flex-shrink:0; margin-top:1px;"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            <p style="font-size:13px; color:var(--muted); line-height:1.5;">Vos fichiers et informations sont traités de manière strictement confidentielle. Aucune donnée n'est transmise à des tiers.</p>
-          </div>
-          <button type="submit" class="btn-primary" style="width:100%; justify-content:center; font-size:16px; padding:16px;">
+
+          <!-- Submit -->
+          <button type="submit" class="btn-primary" id="submit-btn" style="width:100%;justify-content:center;font-size:16px;padding:16px;">
             Envoyer ma demande de devis
             <svg class="arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
+
         </form>
-        <div id="form-success" style="display:none; background:rgba(34,197,94,0.08); border:1px solid rgba(34,197,94,0.25); border-radius:16px; padding:32px; text-align:center; margin-top:16px;">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" style="margin:0 auto 16px; display:block;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          <h3 style="font-size:18px; font-weight:700; margin-bottom:8px;">Message envoyé&nbsp;!</h3>
-          <p style="font-size:15px; color:var(--muted);">Nous vous répondrons sous 48h ouvrées avec une analyse et un devis détaillé.</p>
+
+        <!-- Success -->
+        <div id="form-success" style="display:none;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.25);border-radius:20px;padding:48px;text-align:center;margin-top:16px;">
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.8" style="margin:0 auto 20px;display:block;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <h3 style="font-size:22px;font-weight:800;margin-bottom:10px;">Demande envoyée !</h3>
+          <p style="font-size:16px;color:var(--muted);line-height:1.7;">Notre équipe technique analyse votre projet.<br>Vous recevrez un retour sous <strong style="color:var(--text);">48h ouvrées</strong>.</p>
         </div>
       </div>
 
@@ -1176,12 +1281,68 @@ counters.forEach(c => observer.observe(c));
 const SUPABASE_URL = 'https://dodlgiqrmbhfozhglajt.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRvZGxnaXFybWJoZm96aGdsYWp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5Nzc3NTAsImV4cCI6MjA5ODU1Mzc1MH0.lGULFm1fZiVJiDB-3OWh1krevpshu6q5Z1hhwTuePbM';
 
+// Chips
+function selectChip(el, value) {
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('type_besoin').value = value;
+}
+
+// Drag & drop
+function dragOver(e) {
+  e.preventDefault();
+  e.currentTarget.style.borderColor = 'rgba(249,115,22,0.6)';
+  e.currentTarget.style.background = 'rgba(249,115,22,0.05)';
+}
+function dropFiles(e) {
+  e.preventDefault();
+  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)';
+  e.currentTarget.style.background = 'transparent';
+  handleFiles(e.dataTransfer.files);
+}
+
+let selectedFiles = [];
+function handleFiles(files) {
+  const allowed = ['stl','obj','step','stp','3mf','zip','pdf'];
+  const maxSize = 50 * 1024 * 1024;
+  Array.from(files).forEach(f => {
+    const ext = f.name.split('.').pop().toLowerCase();
+    if (!allowed.includes(ext)) return;
+    if (f.size > maxSize) { alert(`${f.name} dépasse 50 Mo`); return; }
+    if (!selectedFiles.find(x => x.name === f.name)) selectedFiles.push(f);
+  });
+  renderFileList();
+}
+function removeFile(name) {
+  selectedFiles = selectedFiles.filter(f => f.name !== name);
+  renderFileList();
+}
+function renderFileList() {
+  const list = document.getElementById('file-list');
+  list.innerHTML = selectedFiles.map(f => `
+    <div class="file-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+      <span style="font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${f.name}</span>
+      <span style="font-size:12px;color:var(--muted);flex-shrink:0;">${(f.size/1024/1024).toFixed(1)} Mo</span>
+      <button class="file-remove" onclick="removeFile('${f.name}')" type="button" aria-label="Supprimer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>`).join('');
+}
+
+// Submit
 async function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
-  const btn = form.querySelector('button[type=submit]');
+  const btn = document.getElementById('submit-btn');
+
+  if (!document.getElementById('type_besoin').value) {
+    alert('Veuillez sélectionner un type de besoin.');
+    return;
+  }
+
   btn.disabled = true;
-  btn.textContent = 'Envoi en cours…';
+  btn.innerHTML = '<svg style="animation:spin 1s linear infinite" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Envoi en cours…';
 
   const data = {
     prenom: form.prenom.value,
@@ -1189,30 +1350,48 @@ async function handleSubmit(e) {
     societe: form.societe.value,
     email: form.email.value,
     telephone: form.telephone.value,
-    type_projet: form.sujet.value,
-    message: form.message.value
+    type_besoin: form.type_besoin.value,
+    technologie: form.technologie.value,
+    quantite: form.quantite.value,
+    dimensions: form.dimensions.value,
+    matiere: form.matiere.value,
+    message: form.message.value,
+    fichiers: selectedFiles.map(f => f.name).join(', ')
   };
 
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/contacts`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'apikey': SUPABASE_KEY,
-      'Authorization': `Bearer ${SUPABASE_KEY}`,
-      'Prefer': 'return=minimal'
-    },
-    body: JSON.stringify(data)
-  });
+  try {
+    // 1. Sauvegarde Supabase
+    const dbRes = await fetch(`${SUPABASE_URL}/rest/v1/contacts`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(data)
+    });
+    if (!dbRes.ok) throw new Error('db');
 
-  if (res.ok) {
+    // 2. Email via API Vercel
+    await fetch('/api/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
     form.style.display = 'none';
     document.getElementById('form-success').style.display = 'block';
-  } else {
+  } catch {
     btn.disabled = false;
-    btn.textContent = 'Envoyer ma demande de devis';
-    alert('Une erreur est survenue. Veuillez réessayer ou nous contacter par email.');
+    btn.innerHTML = 'Envoyer ma demande de devis <svg class="arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+    alert('Une erreur est survenue. Contactez-nous à t.castaldi@creadil.com');
   }
 }
+
+const spinStyle = document.createElement('style');
+spinStyle.textContent = '@keyframes spin{to{transform:rotate(360deg)}}';
+document.head.appendChild(spinStyle);
 
 // Responsive grids
 const style = document.createElement('style');
