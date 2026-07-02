@@ -1,0 +1,5 @@
+{
+  "version": 2,
+  "builds": [{ "src": "creadil.html", "use": "@vercel/static" }],
+  "routes": [{ "src": "/(.*)", "dest": "/creadil.html" }]
+}
