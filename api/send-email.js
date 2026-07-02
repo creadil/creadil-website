@@ -79,7 +79,7 @@ export default async function handler(req, res) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      from: 'CREADIL <onboarding@resend.dev>',
+      from: 'CREADIL <devis@eestaurexo.resend.app>',
       to: ['t.castaldi@creadil.com'],
       subject: `Demande projet "${d.societe}"`,
       html
