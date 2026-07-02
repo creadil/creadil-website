@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Impression 3D Professionnelle | CREADIL</title>
+<meta name="description" content="Conseils, guides et actualités sur l'impression 3D professionnelle : technologies, matériaux, grand format, prototypage et confidentialité industrielle. Par CREADIL, Lyon.">
+<link rel="canonical" href="https://creadil-website.vercel.app/blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog — Impression 3D Professionnelle | CREADIL">
+<meta property="og:description" content="Conseils, guides et actualités sur l'impression 3D professionnelle : technologies, matériaux, grand format, prototypage et confidentialité industrielle.">
+<meta property="og:url" content="https://creadil-website.vercel.app/blog">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Blog CREADIL",
+  "url": "https://creadil-website.vercel.app/blog",
+  "description": "Conseils et guides sur l'impression 3D professionnelle.",
+  "publisher": { "@type": "Organization", "name": "CREADIL" }
+}
+</script>
+<style>
+  :root {
+    --orange: #F97316;
+    --orange-dark: #C2410C;
+    --navy: #050A14;
+    --navy-2: #0A1628;
+    --navy-3: #0F1F3D;
+    --steel: #1E3A5F;
+    --text: #F1F5F9;
+    --muted: #94A3B8;
+    --border: rgba(255,255,255,0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--navy); color: var(--text); }
+  body { overflow-x: hidden; }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--navy); }
+  ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 3px; }
+
+  #navbar {
+    position: fixed; top: 1rem; left: 50%; transform: translateX(-50%);
+    width: calc(100% - 2rem); max-width: 1200px;
+    background: rgba(5,10,20,0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+  #navbar.scrolled { background: rgba(5,10,20,0.95); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+  .nav-link { color: var(--muted); font-size: 14px; font-weight: 500; text-decoration: none; transition: color 0.2s; white-space: nowrap; }
+  .nav-link:hover, .nav-link.active { color: var(--text); }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--orange); color: white; font-weight: 600; font-size: 15px;
+    padding: 14px 28px; border-radius: 12px; text-decoration: none;
+    transition: all 0.25s ease; border: 2px solid var(--orange); cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--orange-dark); border-color: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(249,115,22,0.35); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: var(--text); font-weight: 600; font-size: 15px;
+    padding: 14px 28px; border-radius: 12px; text-decoration: none;
+    transition: all 0.25s ease; border: 2px solid var(--border); cursor: pointer;
+  }
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.05); transform: translateY(-2px); }
+
+  .arrow-icon { transition: transform 0.2s; }
+  .btn-primary:hover .arrow-icon { transform: translateX(4px); }
+
+  .section-tag { display: inline-block; color: var(--orange); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px; }
+  .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.15; color: var(--text); }
+  .section-subtitle { font-size: 17px; color: var(--muted); line-height: 1.7; max-width: 600px; margin-top: 16px; }
+  .section { padding: 100px 0; }
+  @media(max-width:768px) { .section { padding: 60px 0; } }
+
+  .logo-text { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); }
+  .logo-text span { color: var(--orange); }
+
+  .grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(249,115,22,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(249,115,22,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+  }
+  .glow-orb { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; }
+  .orb-1 { width: 600px; height: 600px; background: rgba(249,115,22,0.12); top: -200px; right: -100px; }
+  .orb-2 { width: 400px; height: 400px; background: rgba(14,165,233,0.08); bottom: -100px; left: -100px; }
+
+  /* Blog header */
+  #blog-hero { position: relative; overflow: hidden; padding: 160px 0 60px; background: var(--navy); }
+
+  /* Post card */
+  .post-card {
+    display: flex; flex-direction: column;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.35s ease;
+    position: relative;
+  }
+  .post-card:hover { background: rgba(249,115,22,0.04); border-color: rgba(249,115,22,0.2); transform: translateY(-6px); }
+  .post-card-media {
+    height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .post-card-media::after {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at top left, rgba(249,115,22,0.18), transparent 70%);
+  }
+  .post-card-body { padding: 24px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .post-tag {
+    display: inline-block; align-self: flex-start;
+    background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.25);
+    color: #FB923C; font-size: 11px; font-weight: 700;
+    padding: 5px 12px; border-radius: 100px; letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .post-title { font-size: 19px; font-weight: 700; color: var(--text); line-height: 1.4; }
+  .post-excerpt { font-size: 14px; color: var(--muted); line-height: 1.6; flex: 1; }
+  .post-meta { font-size: 12.5px; color: var(--muted); display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+  .post-read { font-size: 13px; font-weight: 600; color: var(--orange); display: flex; align-items: center; gap: 6px; margin-top: 8px; }
+  .post-card:hover .post-read .arrow-icon { transform: translateX(4px); }
+
+  footer { background: var(--navy-2); border-top: 1px solid var(--border); }
+
+  #mobile-menu { display: none; }
+  @media (max-width: 768px) {
+    #nav-links { display: none; }
+    #mobile-menu-btn { display: flex !important; }
+    #mobile-menu.open { display: flex; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="navbar">
+  <div style="display:flex; align-items:center; justify-content:space-between; padding: 14px 24px;">
+    <a href="/" style="text-decoration:none;">
+      <span class="logo-text">CREA<span>DIL</span></span>
+    </a>
+    <div id="nav-links" style="display:flex; align-items:center; gap:32px;">
+      <a href="/#services" class="nav-link">Services</a>
+      <a href="/#capacites" class="nav-link">Capacités</a>
+      <a href="/#confidentialite" class="nav-link">Confidentialité</a>
+      <a href="/#process" class="nav-link">Process</a>
+      <a href="/#materiaux" class="nav-link">Matériaux</a>
+      <a href="/blog" class="nav-link active">Blog</a>
+    </div>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <a href="/#contact" class="btn-primary" style="padding:10px 20px; font-size:14px;">
+        Demander un devis
+        <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <button id="mobile-menu-btn" onclick="toggleMenu()" style="display:none; background:rgba(255,255,255,0.06); border:1px solid var(--border); border-radius:10px; padding:10px; cursor:pointer; color:var(--text); align-items:center; justify-content:center;" aria-label="Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" style="flex-direction:column; gap:4px; padding:0 16px 16px; border-top:1px solid var(--border); margin-top:0;">
+    <a href="/#services" class="nav-link" style="padding:12px 8px; display:block; border-bottom:1px solid var(--border);" onclick="toggleMenu()">Services</a>
+    <a href="/#capacites" class="nav-link" style="padding:12px 8px; display:block; border-bottom:1px solid var(--border);" onclick="toggleMenu()">Capacités</a>
+    <a href="/#confidentialite" class="nav-link" style="padding:12px 8px; display:block; border-bottom:1px solid var(--border);" onclick="toggleMenu()">Confidentialité</a>
+    <a href="/#process" class="nav-link" style="padding:12px 8px; display:block; border-bottom:1px solid var(--border);" onclick="toggleMenu()">Process</a>
+    <a href="/blog" class="nav-link" style="padding:12px 8px; display:block; border-bottom:1px solid var(--border);" onclick="toggleMenu()">Blog</a>
+    <a href="/#contact" class="nav-link" style="padding:12px 8px; display:block;" onclick="toggleMenu()">Contact</a>
+  </div>
+</nav>
+
+<!-- ===== BLOG HERO ===== -->
+<section id="blog-hero">
+  <div class="grid-bg"></div>
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+  <div style="max-width:1200px; margin:0 auto; padding:0 24px; position:relative;" data-aos="fade-up">
+    <span class="badge" style="display:inline-flex; align-items:center; gap:8px; background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.25); color:#FB923C; font-size:12px; font-weight:600; padding:6px 14px; border-radius:100px; letter-spacing:0.05em; text-transform:uppercase;">
+      <span style="width:6px; height:6px; background:#F97316; border-radius:50%;"></span>
+      Blog CREADIL
+    </span>
+    <h1 class="section-title" style="margin-top:20px; max-width:700px;">Ressources & guides sur l'impression 3D professionnelle</h1>
+    <p class="section-subtitle">Technologies, matériaux, grand format, confidentialité : nos experts partagent leurs conseils pour réussir vos projets d'impression 3D industrielle.</p>
+  </div>
+</section>
+
+<!-- ===== POSTS GRID ===== -->
+<section class="section" style="padding-top:40px;">
+  <div style="max-width:1200px; margin:0 auto; padding:0 24px;">
+    <div id="posts-grid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:28px;"></div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section" style="padding-top:0;">
+  <div style="max-width:1200px; margin:0 auto; padding:0 24px;">
+    <div class="conf-card" style="background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(14,165,233,0.04)); border:1px solid rgba(249,115,22,0.2); border-radius:24px; padding:48px; text-align:center;" data-aos="fade-up">
+      <h2 class="section-title" style="font-size:clamp(1.6rem,3vw,2.2rem);">Un projet d'impression 3D à réaliser ?</h2>
+      <p class="section-subtitle" style="margin:16px auto 28px; max-width:500px;">Demandez votre devis gratuit sous 24h. 100% interne, confidentialité totale, grand format.</p>
+      <a href="/#contact" class="btn-primary">
+        Demander un devis
+        <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div style="max-width:1200px; margin:0 auto; padding:60px 24px 40px;">
+    <div style="display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; margin-bottom:48px;" class="footer-grid">
+      <div>
+        <a href="/" style="text-decoration:none;"><span class="logo-text">CREA<span>DIL</span></span></a>
+        <p style="font-size:14px; color:var(--muted); line-height:1.7; margin-top:16px; max-width:300px;">
+          Service d'impression 3D à façon exclusivement dédié aux professionnels. 100&nbsp;% interne, grand format, confidentialité totale. Basé près de Lyon.
+        </p>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:16px; letter-spacing:0.05em; text-transform:uppercase;">Services</div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <a href="/#services" style="font-size:14px; color:var(--muted); text-decoration:none;">Impression 3D</a>
+          <a href="/#services" style="font-size:14px; color:var(--muted); text-decoration:none;">Prototypage</a>
+          <a href="/#services" style="font-size:14px; color:var(--muted); text-decoration:none;">Grand format</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:16px; letter-spacing:0.05em; text-transform:uppercase;">Entreprise</div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <a href="/#apropos" style="font-size:14px; color:var(--muted); text-decoration:none;">À propos</a>
+          <a href="/blog" style="font-size:14px; color:var(--muted); text-decoration:none;">Blog</a>
+          <a href="/#contact" style="font-size:14px; color:var(--muted); text-decoration:none;">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:16px; letter-spacing:0.05em; text-transform:uppercase;">Contact</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="font-size:14px; color:var(--muted);">
+            <div style="color:var(--text); font-weight:500; margin-bottom:3px;">Email</div>
+            <a href="mailto:contact@creadil.fr" style="color:var(--muted); text-decoration:none;">contact@creadil.fr</a>
+          </div>
+          <a href="/#contact" class="btn-primary" style="padding:10px 16px; font-size:13px; margin-top:8px;">Demander un devis</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid var(--border); padding-top:28px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+      <p style="font-size:13px; color:var(--muted);">© 2024 CREADIL. Tous droits réservés.</p>
+      <div style="display:flex; gap:24px;">
+        <a href="/" style="font-size:13px; color:var(--muted); text-decoration:none;">Accueil</a>
+        <a href="/blog" style="font-size:13px; color:var(--muted); text-decoration:none;">Blog</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) navbar.classList.add('scrolled');
+  else navbar.classList.remove('scrolled');
+});
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+
+/* ===========================================================
+   REPERTOIRE DES ARTICLES
+   Pour ajouter un nouvel article :
+   1. Dupliquez /blog/template.html, renommez-le (ex: /blog/mon-sujet.html)
+   2. Remplissez le contenu et les balises SEO dans ce nouveau fichier
+   3. Ajoutez une entrée ci-dessous avec les mêmes infos
+   =========================================================== */
+const posts = [
+  {
+    slug: "impression-3d-grand-format-guide",
+    tag: "Grand format",
+    title: "Impression 3D grand format : le guide complet pour les professionnels",
+    excerpt: "Jusqu'à quelle taille peut-on imprimer en 3D ? Quelles technologies, quels usages industriels, quelles précautions prendre ? Le tour de la question.",
+    date: "2026-07-02",
+    dateLabel: "2 juillet 2026",
+    readTime: "7 min"
+  },
+  {
+    slug: "choisir-technologie-impression-3d",
+    tag: "Technologies",
+    title: "FDM, SLA, SLS : quelle technologie d'impression 3D choisir pour son projet ?",
+    excerpt: "Précision, résistance, coût, délai : comparatif des principales technologies d'impression 3D professionnelle pour vous aider à faire le bon choix.",
+    date: "2026-07-02",
+    dateLabel: "2 juillet 2026",
+    readTime: "6 min"
+  },
+  {
+    slug: "confidentialite-prototypage-3d",
+    tag: "Confidentialité",
+    title: "Confidentialité et prototypage 3D : pourquoi la fabrication 100% interne change tout",
+    excerpt: "NDA, sous-traitance, fuite de propriété intellectuelle : les risques du prototypage externalisé et comment un atelier 100% interne les élimine.",
+    date: "2026-07-02",
+    dateLabel: "2 juillet 2026",
+    readTime: "5 min"
+  }
+];
+
+const grid = document.getElementById('posts-grid');
+grid.innerHTML = posts.map((p, i) => `
+  <a href="/blog/${p.slug}" class="post-card" data-aos="fade-up" data-aos-delay="${i * 80}">
+    <div class="post-card-media" style="background: linear-gradient(135deg, var(--navy-3), var(--navy-2));">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5" style="position:relative; opacity:0.8;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+    </div>
+    <div class="post-card-body">
+      <span class="post-tag">${p.tag}</span>
+      <h2 class="post-title">${p.title}</h2>
+      <p class="post-excerpt">${p.excerpt}</p>
+      <div class="post-meta">
+        <span>${p.dateLabel}</span><span>·</span><span>${p.readTime} de lecture</span>
+      </div>
+      <span class="post-read">Lire l'article
+        <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </span>
+    </div>
+  </a>
+`).join('');
+
+const respStyle = document.createElement('style');
+respStyle.textContent = `
+  @media(max-width:900px){ #posts-grid{grid-template-columns:1fr 1fr!important;} .footer-grid{grid-template-columns:1fr 1fr!important;} }
+  @media(max-width:600px){ #posts-grid{grid-template-columns:1fr!important;} .footer-grid{grid-template-columns:1fr!important;} }
+`;
+document.head.appendChild(respStyle);
+</script>
+</body>
+</html>

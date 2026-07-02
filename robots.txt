@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://creadil-website.vercel.app/sitemap.xml
