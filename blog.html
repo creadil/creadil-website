@@ -281,38 +281,20 @@ function toggleMenu() {
 
 /* ===========================================================
    REPERTOIRE DES ARTICLES
+   Chaque article a son propre design, libre (pas de template imposé).
    Pour ajouter un nouvel article :
-   1. Dupliquez /blog/template.html, renommez-le (ex: /blog/mon-sujet.html)
-   2. Remplissez le contenu et les balises SEO dans ce nouveau fichier
-   3. Ajoutez une entrée ci-dessous avec les mêmes infos
+   1. Créez /blog/mon-sujet.html avec le contenu et les balises SEO
+   2. Ajoutez une entrée ci-dessous avec les mêmes infos
    =========================================================== */
 const posts = [
   {
-    slug: "impression-3d-grand-format-guide",
-    tag: "Grand format",
-    title: "Impression 3D grand format : le guide complet pour les professionnels",
-    excerpt: "Jusqu'à quelle taille peut-on imprimer en 3D ? Quelles technologies, quels usages industriels, quelles précautions prendre ? Le tour de la question.",
+    slug: "imprimante-3d-professionnelle-sans-cloud-confidentialite",
+    tag: "Confidentialité industrielle",
+    title: "Imprimante 3D sans cloud : pourquoi les industriels doivent éviter les machines connectées",
+    excerpt: "Cloud obligatoire, caméras piratées, fichiers stockés à l'étranger : pourquoi une fabrication additive 100% locale est vitale pour protéger vos projets.",
     date: "2026-07-02",
     dateLabel: "2 juillet 2026",
-    readTime: "7 min"
-  },
-  {
-    slug: "choisir-technologie-impression-3d",
-    tag: "Technologies",
-    title: "FDM, SLA, SLS : quelle technologie d'impression 3D choisir pour son projet ?",
-    excerpt: "Précision, résistance, coût, délai : comparatif des principales technologies d'impression 3D professionnelle pour vous aider à faire le bon choix.",
-    date: "2026-07-02",
-    dateLabel: "2 juillet 2026",
-    readTime: "6 min"
-  },
-  {
-    slug: "confidentialite-prototypage-3d",
-    tag: "Confidentialité",
-    title: "Confidentialité et prototypage 3D : pourquoi la fabrication 100% interne change tout",
-    excerpt: "NDA, sous-traitance, fuite de propriété intellectuelle : les risques du prototypage externalisé et comment un atelier 100% interne les élimine.",
-    date: "2026-07-02",
-    dateLabel: "2 juillet 2026",
-    readTime: "5 min"
+    readTime: "11 min"
   }
 ];
 
